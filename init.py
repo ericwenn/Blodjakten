@@ -4,6 +4,10 @@ def cursor(screen,x,y):
     pygame.draw.ellipse(screen, white, [x - 10, y - 10, 20, 20], 0)
 
 
+
+#hasudhuahsudhasd
+
+
 pygame.init()
 
 baseSpeed = 20
