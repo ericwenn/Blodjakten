@@ -5,7 +5,8 @@ global pygame
 
 pygame.init()
 
-baseSpeed = 20
+
+
 
 size = width, height = 1600, 800
 black = (0, 0, 0)
