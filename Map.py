@@ -5,4 +5,9 @@ class Map:
 
         self.width = 1600
         self.height = 800
-        self.bg = pygame.Rect(self.width, self.height)
+        boxheight = 50
+        boxwidth = 50
+        self.bg = pygame.Rect(w = self.width, h = self.height, x = 0, y = 0)
+
+        self.box1 = pygame.Rect(w = boxwidth, h = boxheight, x = 100, y = 100)
+
