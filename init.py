@@ -5,9 +5,6 @@ def cursor(screen,x,y):
 
 
 
-#hasudhuahsudhasd
-
-
 pygame.init()
 
 baseSpeed = 20
@@ -17,7 +14,6 @@ speed = [0, 0]
 black = (0, 0, 0)
 white = (255,255,255)
 
-#############
 
 screen = pygame.display.set_mode(size)
 
