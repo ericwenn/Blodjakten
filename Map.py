@@ -2,7 +2,7 @@ import pygame
 
 class Map:
     def __init__(self):
-
+        #Test kommentar
         self.width = 1600
         self.height = 800
         boxheight = 50
