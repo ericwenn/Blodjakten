@@ -1,27 +1,25 @@
-import pygame, sys
+import pygame, sys, os
+from Player import Player
 
-def cursor(screen,x,y):
-    pygame.draw.ellipse(screen, white, [x - 10, y - 10, 20, 20], 0)
-
-
+global pygame
 
 pygame.init()
 
 baseSpeed = 20
 
-size = width, height = 800, 800
-speed = [0, 0]
+size = width, height = 1600, 800
 black = (0, 0, 0)
 white = (255,255,255)
 
 
 screen = pygame.display.set_mode(size)
 
-ball = pygame.image.load("assets/ball.gif")
-ballrect = ball.get_rect()
+
+
 
 gameover = False
-
+player1 = Player('first')
+player2 = Player('second')
 
 while not gameover:
     for event in pygame.event.get():
@@ -29,39 +27,25 @@ while not gameover:
             gameover = True
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                speed[0] = -baseSpeed
-            elif event.key == pygame.K_RIGHT:
-                speed[0] = baseSpeed
-            elif event.key == pygame.K_DOWN:
-                speed[1] = baseSpeed
-            elif event.key == pygame.K_UP:
-                speed[1] = -baseSpeed
+            player1.keydown(event.key)
+            player2.keydown(event.key)
+
 
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                speed[0] = 0
-            elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                speed[1] = 0
+            player1.keyup(event.key)
+            player2.keyup(event.key)
 
 
 
     screen.fill(black)
 
-    pos = pygame.mouse.get_pos()
-
-    posX = pos[0]
-    posY = pos[1]
-
-    cursor(screen, posX, posY)
-
-    ballrect = ballrect.move(speed)
-    if ballrect.left < 0 or ballrect.right > width:
-        speed[0] = 0
-    if ballrect.top < 0 or ballrect.bottom > height:
-        speed[1] = 0
+    player1.move(screen)
+    player2.move(screen)
 
 
-    screen.blit(ball, ballrect)
+
+
+
+
     pygame.display.flip()
