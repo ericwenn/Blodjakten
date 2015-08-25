@@ -26,7 +26,7 @@ class Player:
         self.speed = [0,0]
         self.obj = pygame.image.load("assets/ball.gif")
         self.objrect = self.obj.get_rect()
-        print(self)
+
 
 
     def keydown(self, key):
@@ -62,3 +62,8 @@ class Player:
             self.speed[1] = 0
 
         screen.blit(self.obj, self.objrect)
+
+
+
+    def getRect(self):
+        return self.objrect
