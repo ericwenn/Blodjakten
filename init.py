@@ -13,6 +13,8 @@ speed = [0, 0]
 black = (0, 0, 0)
 white = (255,255,255)
 
+#############
+
 screen = pygame.display.set_mode(size)
 
 ball = pygame.image.load("assets/ball.gif")
