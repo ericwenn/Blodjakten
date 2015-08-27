@@ -1,7 +1,7 @@
 global players, shots
 
-def init_map(screen):
-    global map
+def init_map(screen, n):
+    global map, boxes
     map = Map(screen)
 
 def init_players(n):
@@ -58,7 +58,7 @@ screen = pygame.display.set_mode(size)
 
 
 gameover = False
-init_map(screen)
+init_map(screen, 5)
 init_players(2)
 
 while not gameover:
@@ -81,3 +81,5 @@ while not gameover:
     move_players(screen)
 
     pygame.display.flip()
+
+pygame.quit()
