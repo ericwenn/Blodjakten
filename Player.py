@@ -6,9 +6,9 @@ global shots
 
 shots = []
 
-def init_shot(speed, rect):
+def init_shot(speed, rect, maprects):
     global shots
-    shots.append(Shot(speed, rect))
+    shots.append(Shot(speed, rect, maprects))
 
 def move_shots(screen):
     global shots
@@ -72,7 +72,7 @@ class Player:
                 self.speed[1] = -self.baseSpeed
                 self.dirY = 'up'
             elif key == self.shoot:
-                init_shot(self.speed, self.objrect)
+                init_shot(self.speed, self.objrect, self.rects)
 
 
 
