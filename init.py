@@ -3,13 +3,13 @@ global players, shots, init_shot
 
 def init_map(screen, n):
     global map, boxes
-    map = Map(screen)
 
-def init_players(n):
+
+def init_players(n, map):
     global players
     players = []
     while n > 0:
-        players.append(Player(n))
+        players.append(Player(n, map))
         n -= 1
 
 
@@ -56,8 +56,9 @@ screen = pygame.display.set_mode(size)
 
 
 gameover = False
-init_map(screen, 5)
-init_players(2)
+
+map = Map(screen)
+init_players(2, map.getRects())
 
 while not gameover:
     for event in pygame.event.get():
