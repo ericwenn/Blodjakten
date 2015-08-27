@@ -1,6 +1,10 @@
 global players, shots, init_shot
 
 
+def init_map(screen, n):
+    global map, boxes
+    map = Map(screen)
+
 def init_players(n):
     global players
     players = []
@@ -30,7 +34,7 @@ import pygame, sys, os
 global pygame
 
 from Player import Player
-
+from Map import Map
 
 
 
@@ -52,6 +56,7 @@ screen = pygame.display.set_mode(size)
 
 
 gameover = False
+init_map(screen, 5)
 init_players(2)
 
 while not gameover:
@@ -70,6 +75,9 @@ while not gameover:
 
 
     screen.fill(black)
+    map.update(screen)
     move_players(screen)
 
     pygame.display.flip()
+
+pygame.quit()
