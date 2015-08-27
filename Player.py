@@ -1,10 +1,31 @@
 import pygame
+from Shot import Shot
 
+global shots
+
+shots = []
+
+def init_shot(speed, rect):
+    global shots
+    shots.append(Shot(speed, rect))
+
+def move_shots(screen):
+    global shots
+    tmp_shots = []
+    for shot in shots:
+        if not shot == False:
+            shot.move(screen)
+            tmp_shots.append(shot)
+
+    shots = tmp_shots
 
 
 class Player:
     def __init__(self, player):
         print(player)
+
+        self.ID = player
+
 
         if player == 1:
             self.left = pygame.K_a
@@ -46,7 +67,7 @@ class Player:
                 self.speed[1] = -self.baseSpeed
                 self.dirY = 'up'
             elif key == self.shoot:
-                print("SHOT")
+                init_shot(self.speed, self.objrect)
 
 
 
@@ -60,8 +81,19 @@ class Player:
 
 
 
-    def move(self, screen):
+    def move(self, screen, players):
+
+        if self.ID == 1:
+            move_shots(screen)
+
         self.objrect = self.objrect.move(self.speed)
+
+        for player in players:
+            if not player.ID == self.ID:
+                colls.append(player.getRect())
+
+        print(colls)
+
         if self.objrect.left < 0 or self.objrect.right > self.width:
             self.speed[0] = 0
         if self.objrect.top < 0 or self.objrect.bottom > self.height:

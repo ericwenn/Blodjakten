@@ -1,4 +1,5 @@
-global players, shots
+global players, shots, init_shot
+
 
 def init_players(n):
     global players
@@ -19,11 +20,8 @@ def keyup_players(key):
 
 def move_players(screen):
     for player in players:
-        player.move(screen)
+        player.move(screen, players)
 
-def init_shot(speed):
-    global shots
-    shots.append(Shot(speed))
 
 
 
