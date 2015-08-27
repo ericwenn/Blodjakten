@@ -32,4 +32,9 @@ class Map:
             counter += 1
 
     def getRects(self):
-        return self.boxes
+        newboxes = []
+        counter = 1
+        while counter < self.boxes[len(self.boxes)]:
+            newboxes = self.boxes[counter - 1]
+            counter += 1
+        return newboxes
