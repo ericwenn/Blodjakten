@@ -22,10 +22,12 @@ def move_shots(screen):
 
 
 class Player:
-    def __init__(self, player):
+    def __init__(self, player, rects):
         print(player)
 
         self.ID = player
+        self.rects = rects;
+
 
 
         if player == 1:
@@ -96,6 +98,11 @@ class Player:
                 if pygame.Rect.colliderect(self.getRect(), player.getRect()):
                     self.speed[0] = 0
                     self.speed[1] = 0
+
+        for rect in self.rects:
+            if pygame.Rect.colliderect(self.getRect(), rect):
+                self.speed[0] = 0
+                self.speed[1] = 0
 
 
         if self.objrect.left < 0 or self.objrect.right > self.width:
