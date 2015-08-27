@@ -1,10 +1,11 @@
 import pygame
 
 class Shot:
-    def __init__(self, speed, rect):
+    def __init__(self, speed, rect, mapRects):
 
         self.maxWidth = 1600
         self.maxHeight = 800
+        self.mapRects = mapRects;
 
         self.speed = [speed[0] * 2, speed[1] * 2]
         self.obj = pygame.image.load("assets/ball.gif")
@@ -22,6 +23,10 @@ class Shot:
             return False
         elif self.objrect.x < 0 or self.objrect.y < 0:
             return False
+
+        for rect in self.rects:
+            if pygame.Rect.colliderect(self.getRect(), rect):
+                return False
 
         self.objrect = self.objrect.move(self.speed)
         screen.blit(self.obj, self.objrect)
