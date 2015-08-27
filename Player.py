@@ -1,5 +1,6 @@
 import pygame
 from Shot import Shot
+from random import randint
 
 global shots
 
@@ -49,6 +50,8 @@ class Player:
         self.speed = [0,0]
         self.obj = pygame.image.load("assets/ball.gif")
         self.objrect = self.obj.get_rect()
+        self.objrect.x = randint(self.objrect.width, self.width) - self.objrect.width
+        self.objrect.y = randint(self.objrect.height, self.height) - self.objrect.height
 
 
 
