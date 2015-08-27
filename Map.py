@@ -31,3 +31,5 @@ class Map:
             self.boxes[counter - 1] = pygame.draw.rect(screen, self.white, (positions[counter - 1][0], positions[counter - 1][1], self.boxwidth, self.boxheight), 0)
             counter += 1
 
+    def getRects(self):
+        return self.boxes
