@@ -1,14 +1,49 @@
+global players, shots
+
+def init_players(n):
+    global players
+    players = []
+    while n > 0:
+        players.append(Player(n))
+        n -= 1
+
+
+def keydown_players(key):
+    for player in players:
+        player.keydown(key)
+
+
+def keyup_players(key):
+    for player in players:
+        player.keyup(key)
+
+def move_players(screen):
+    for player in players:
+        player.move(screen)
+
+def init_shot(speed):
+    global shots
+    shots.append(Shot(speed))
+
+
+
+
 import pygame, sys, os
+global pygame
+
 from Player import Player
 
-global pygame
+
+
+
+
 
 pygame.init()
 
-
-
-
 size = width, height = 1600, 800
+
+
+
 black = (0, 0, 0)
 white = (255,255,255)
 
@@ -19,8 +54,7 @@ screen = pygame.display.set_mode(size)
 
 
 gameover = False
-player1 = Player('first')
-player2 = Player('second')
+init_players(2)
 
 while not gameover:
     for event in pygame.event.get():
@@ -28,25 +62,16 @@ while not gameover:
             gameover = True
 
         if event.type == pygame.KEYDOWN:
-            player1.keydown(event.key)
-            player2.keydown(event.key)
+            keydown_players(event.key)
 
 
 
         if event.type == pygame.KEYUP:
-            player1.keyup(event.key)
-            player2.keyup(event.key)
+            keyup_players(event.key)
 
 
 
     screen.fill(black)
-
-    player1.move(screen)
-    player2.move(screen)
-
-
-
-
-
+    move_players(screen)
 
     pygame.display.flip()
