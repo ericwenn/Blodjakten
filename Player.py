@@ -90,9 +90,10 @@ class Player:
 
         for player in players:
             if not player.ID == self.ID:
-                colls.append(player.getRect())
+                if pygame.Rect.colliderect(self.getRect(), player.getRect()):
+                    self.speed[0] = 0
+                    self.speed[1] = 0
 
-        print(colls)
 
         if self.objrect.left < 0 or self.objrect.right > self.width:
             self.speed[0] = 0
