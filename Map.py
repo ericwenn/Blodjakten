@@ -9,6 +9,7 @@ class Map:
         self.boxwidth = 80
         self.white = (255,255,255)
 
+
         self.createBoxes(screen, 7)
 
     def createBoxes(self, screen, amount):
