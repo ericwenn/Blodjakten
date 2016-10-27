@@ -24,9 +24,13 @@ class Shot:
         elif self.objrect.x < 0 or self.objrect.y < 0:
             return False
 
-        for rect in self.rects:
-            if pygame.Rect.colliderect(self.getRect(), rect):
+        for rect in self.mapRects:
+            if pygame.Rect.colliderect(self.objrect, rect):
                 return False
 
         self.objrect = self.objrect.move(self.speed)
         screen.blit(self.obj, self.objrect)
+
+
+
+
